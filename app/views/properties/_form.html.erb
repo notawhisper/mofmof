@@ -1,5 +1,4 @@
-<%= form_with(model: property, local: true) do |form| %>
-  <% if property.errors.any? %>
+  <!-- <% if property.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(property.errors.count, "error") %> prohibited this property from being saved:</h2>
 
@@ -9,7 +8,9 @@
       <% end %>
       </ul>
     </div>
-  <% end %>
+  <% end %> -->
+
+<%= form_with(model: property, local: true) do |form| %>
 
   <div class="field">
     <%= form.label :name %>
@@ -35,6 +36,24 @@
     <%= form.label :notes %>
     <%= form.text_area :notes %>
   </div>
+
+
+  <%= form.fields_for :the_nearest_stations do |the_nearest_station| %>
+    <h2>最寄駅<%= the_nearest_station.index + 1 %></h2>
+    <div class="field">
+      <%= the_nearest_station.label :line_name ,"路線名" %>
+      <%= the_nearest_station.text_field :line_name %>
+    </div>
+    <div class="field">
+      <%= the_nearest_station.label :station_name ,"駅名"%>
+      <%= the_nearest_station.text_field :station_name %>
+    </div>
+    <div class="field">
+      <%= the_nearest_station.label :minuites_on_foot ,"徒歩数"%>
+      <%= the_nearest_station.text_field :minuites_on_foot %>
+    </div>
+    <div class="delete_station"></div>
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>
