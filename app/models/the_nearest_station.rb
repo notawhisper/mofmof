@@ -1,0 +1,2 @@
+class TheNearestStation < ApplicationRecord
+end
