@@ -27,14 +27,17 @@
 
 <% @property.the_nearest_stations.each_with_index do |the_nearest_station, i| %>
   <h3>最寄駅<%= i + 1 %></h3>
+
   <p>
     <strong>路線名</strong>
     <%= the_nearest_station.line_name %>
   </p>
+
   <p>
     <strong>駅名</strong>
     <%= the_nearest_station.station_name %>
   </p>
+  
   <p>
     <strong>徒歩分数</strong>
     <%= the_nearest_station.minuites_on_foot %>分
