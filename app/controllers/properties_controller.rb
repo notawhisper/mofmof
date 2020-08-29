@@ -10,7 +10,6 @@ class PropertiesController < ApplicationController
   # GET /properties/1
   # GET /properties/1.json
   def show
-
   end
 
   # GET /properties/new
@@ -21,7 +20,9 @@ class PropertiesController < ApplicationController
 
   # GET /properties/1/edit
   def edit
-    @property.the_nearest_stations.build
+    if @property.the_nearest_stations.last.station_name.present?
+      @property.the_nearest_stations.build
+    end
   end
 
   # POST /properties
@@ -65,13 +66,13 @@ class PropertiesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_property
-      @property = Property.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_property
+    @property = Property.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def property_params
-      params.require(:property).permit(:name, :rent, :address, :age, :notes, the_nearest_stations_attributes: [:id, :line_name, :station_name, :minuites_on_foot])
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def property_params
+    params.require(:property).permit(:name, :rent, :address, :age, :notes, the_nearest_stations_attributes: [:id, :line_name, :station_name, :minuites_on_foot])
+  end
 end

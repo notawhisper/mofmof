@@ -1,39 +1,39 @@
-  <!-- <% if property.errors.any? %>
+<%= form_with(model: property, local: true) do |form| %>
+
+  <% if property.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(property.errors.count, "error") %> prohibited this property from being saved:</h2>
 
       <ul>
-      <% property.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% property.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
-  <% end %> -->
-
-<%= form_with(model: property, local: true) do |form| %>
+  <% end %>
 
   <div class="field">
-    <%= form.label :name %>
+    <p><%= form.label :name, "物件名" %></p>
     <%= form.text_field :name %>
   </div>
 
   <div class="field">
-    <%= form.label :rent %>
-    <%= form.number_field :rent %>
+    <p><%= form.label :rent, "賃料" %></p>
+    <%= form.number_field :rent %>円
   </div>
 
   <div class="field">
-    <%= form.label :address %>
+    <p><%= form.label :address, "住所" %></p>
     <%= form.text_field :address %>
   </div>
 
   <div class="field">
-    <%= form.label :age %>
-    <%= form.number_field :age %>
+    <p><%= form.label :age, "築年数" %></p>
+    <%= form.number_field :age %>年
   </div>
 
   <div class="field">
-    <%= form.label :notes %>
+    <p><%= form.label :notes, "備考" %></p>
     <%= form.text_area :notes %>
   </div>
 
@@ -41,21 +41,20 @@
   <%= form.fields_for :the_nearest_stations do |the_nearest_station| %>
     <h2>最寄駅<%= the_nearest_station.index + 1 %></h2>
     <div class="field">
-      <%= the_nearest_station.label :line_name ,"路線名" %>
+      <p><%= the_nearest_station.label :line_name ,"路線名" %></p>
       <%= the_nearest_station.text_field :line_name %>
     </div>
     <div class="field">
-      <%= the_nearest_station.label :station_name ,"駅名"%>
+      <p><%= the_nearest_station.label :station_name ,"駅名"%></p>
       <%= the_nearest_station.text_field :station_name %>
     </div>
     <div class="field">
-      <%= the_nearest_station.label :minuites_on_foot ,"徒歩数"%>
+      <p><%= the_nearest_station.label :minuites_on_foot ,"徒歩分数"%></p>
       <%= the_nearest_station.text_field :minuites_on_foot %>
     </div>
-    <div class="delete_station"></div>
   <% end %>
-
+  <br>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "登録する" %>
   </div>
 <% end %>
