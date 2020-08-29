@@ -1,3 +1,5 @@
 class TheNearestStation < ApplicationRecord
   belongs_to :property
+
+  validates :station_name, presence: true, if: :minuites_on_foot?
 end
