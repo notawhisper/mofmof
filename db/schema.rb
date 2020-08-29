@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_29_070435) do
+ActiveRecord::Schema.define(version: 2020_08_29_080253) do
 
   create_table "properties", force: :cascade do |t|
     t.string "name"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 2020_08_29_070435) do
     t.integer "minuites_on_foot"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "property_id"
+    t.index ["property_id"], name: "index_the_nearest_stations_on_property_id"
   end
 
 end
