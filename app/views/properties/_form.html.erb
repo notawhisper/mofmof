@@ -2,7 +2,7 @@
 
   <% if property.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(property.errors.count, "error") %> prohibited this property from being saved:</h2>
+      <h2><%= pluralize(property.errors.count, "件") %>のエラーが発生しました</h2>
 
       <ul>
         <% property.errors.full_messages.each do |message| %>
